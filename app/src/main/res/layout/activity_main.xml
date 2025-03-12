@@ -8,12 +8,42 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/CtoFTitleTextToView"
+        android:layout_width="215dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/c_to_f_convertor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <EditText
+        android:id="@+id/CtoFEnteredValueEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/enter_a_value_to_convert_to_farenheit"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CtoFTitleTextToView" />
+
+    <Button
+        android:layout_width="215dp"
+        android:layout_height="215dp"
+        android:id="@+id/CtoFConvertButton"
+        android:text="@string/convert"
+        app:layout_constraintTop_toBottomOf="@id/CtoFEnteredValueEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+         />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:id="@+id/CtoFConvertedValueTextView"
+        tools:text="-42.42"
+        app:layout_constraintTop_toBottomOf="@id/CtoFConvertButton"
+        app:layout_constraintEnd_toStartOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

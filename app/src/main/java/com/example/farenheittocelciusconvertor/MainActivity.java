@@ -1,19 +1,18 @@
 package com.example.farenheittocelciusconvertor;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.farenheittocelciusconvertor.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String CONVERTED_VALUE_EXTRA_KEY = "MainActivity_Converted_value_double";
 
     private ActivityMainBinding binding;
 
@@ -35,22 +34,31 @@ public class MainActivity extends AppCompatActivity {
         binding.CtoFConvertButton.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Intent intent = FToCActivity.fToCIntentFactory(getApplicationContext());
+
+                Intent intent = FToCActivity.fToCIntentFactory(getApplicationContext(), convertValue());
                 startActivity(intent);
                 return false;
             }
         });
     }
 
-    public void cToFConversion(View v){
-        double celsiusValue = 0.0;
+    private double convertValue(){
+        double valueToConvert = 0.0;
         String enteredValue = binding.CelsiusValueEditTextNumberSigned.getText().toString();
         if(!enteredValue.isEmpty()){
-            celsiusValue = Double.parseDouble(enteredValue);
+            valueToConvert = Double.parseDouble(enteredValue);
         }
+        valueToConvert = Utils.cToF(valueToConvert);
+        return valueToConvert;
+    }
+    public void displayConvertedValue(View v){
+        binding.CtoFConvertedValueTextView.setText(getString(R.string.degrees_fahrenheit, convertValue()));
 
-        double fahrenheitValue = Utils.cToF(celsiusValue);
-        binding.CtoFConvertedValueTextView.setText(getString(R.string.degrees_fahrenheit,fahrenheitValue));
+    }
 
+    public static Intent MainActivityIntentFactory(Context context, double receivedValue){
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.putExtra(CONVERTED_VALUE_EXTRA_KEY, receivedValue);
+        return intent;
     }
 }

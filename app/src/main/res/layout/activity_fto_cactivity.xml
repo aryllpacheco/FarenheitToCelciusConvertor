@@ -18,4 +18,17 @@
         android:gravity="center"
         android:textSize="24sp"/>
 
+    <EditText
+        android:layout_width="275dip"
+        android:layout_height="75dip"
+        app:layout_constraintTop_toBottomOf="@id/FToC_title_TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:inputType="number|numberSigned|numberDecimal"
+        android:hint="@string/enter_a_value_to_convert"
+        android:gravity="center"
+        android:textSize="24sp"
+        android:id="@+id/FtoCEditText"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

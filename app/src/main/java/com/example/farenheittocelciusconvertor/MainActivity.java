@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         binding.CtoFConvertButton.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-
                 Intent intent = FToCActivity.fToCIntentFactory(getApplicationContext(), convertValue());
                 startActivity(intent);
                 return false;

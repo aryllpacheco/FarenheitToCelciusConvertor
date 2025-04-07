@@ -28,24 +28,34 @@ public class FToCActivity extends AppCompatActivity {
         setContentView(view);
 
         double fahrenheit = getIntent().getDoubleExtra(CONVERTED_VALUE_EXTRA_KEY, 0.0);
-        binding.FtoCEditText.setText(String.format(Locale.ENGLISH,"%.2f",fahrenheit));
+        binding.FtoCEditText.setText(String.format(Locale.ENGLISH, "%.2f", fahrenheit));
 
         binding.FToCTitleTextView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Intent intent = MainActivity.MainActivityIntentFactory(getApplicationContext(),42.0);
+                Intent intent = MainActivity.MainActivityIntentFactory(getApplicationContext(), fahrenheit);
                 startActivity(intent);
                 return false;
             }
         });
 
-        }
-
     }
-
     public static Intent fToCIntentFactory(Context context, double fahrenheitValue){
         Intent intent = new Intent(context, FToCActivity.class);
         intent.putExtra(CONVERTED_VALUE_EXTRA_KEY, fahrenheitValue);
         return intent;
+    }
+
+    private double convertValue(){
+        double valueToConvert = 0.0;
+        String enteredValue = binding.FtoCEditText.getText().toString();
+        if(!enteredValue.isEmpty()){
+            valueToConvert = Double.parseDouble(enteredValue);
+        }
+        valueToConvert = Utils.fToC(valueToConvert);
+        return valueToConvert;
+    }
+    public void displayConvertedValue(View v){
+        binding.FtoCConvertedValueTextView.setText(getString(R.string.degrees_fahrenheit, convertValue()));
     }
 }

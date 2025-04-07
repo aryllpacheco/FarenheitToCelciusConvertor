@@ -30,5 +30,40 @@
         android:textSize="24sp"
         android:id="@+id/FtoCEditText"/>
 
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="25dp"
+        android:id="@+id/fahrenheit_value_label_TextView"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/FtoCEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/fahrenheit_value"
+        android:labelFor="@+id/FahrenheitValueEditTextNumberSigned"
+        />
+
+    <Button
+        android:id="@+id/FtoCConvertButton"
+        android:layout_width="150dp"
+        android:layout_height="75dp"
+        android:onClick="displayConvertedValue"
+        android:text="@string/convert"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fahrenheit_value_label_TextView" />
+
+    <TextView
+        android:id="@+id/FtoCConvertedValueTextView"
+        android:layout_width="150dp"
+        android:layout_height="75dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/FtoCConvertButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="42.00°c"
+        />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

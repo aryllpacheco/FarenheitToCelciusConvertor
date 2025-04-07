@@ -9,41 +9,63 @@
 
     <TextView
         android:id="@+id/CtoFTitleTextToView"
-        android:layout_width="215dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="250dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="28dp"
         android:text="@string/c_to_f_convertor"
+        android:textSize="24sp"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/CtoFEnteredValueEditText"
+        android:id="@+id/CelsiusValueEditTextNumberSigned"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="@string/enter_a_value_to_convert_to_farenheit"
-        android:inputType="numberDecimal"
+        android:gravity="center"
+        android:hint="@string/enter_a_value_to_convert"
+        android:inputType="number|numberDecimal|numberSigned"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CtoFTitleTextToView" />
 
-    <Button
-        android:layout_width="215dp"
-        android:layout_height="215dp"
-        android:id="@+id/CtoFConvertButton"
-        android:text="@string/convert"
-        app:layout_constraintTop_toBottomOf="@id/CtoFEnteredValueEditText"
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="25dp"
+        android:id="@+id/celsius_value_label_TextView"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/CelsiusValueEditTextNumberSigned"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-         />
+        android:text="@string/celsius_value"
+        android:labelFor="@+id/CelsiusValueEditTextNumberSigned"
+        />
+
+    <Button
+        android:id="@+id/CtoFConvertButton"
+        android:layout_width="150dp"
+        android:layout_height="75dp"
+        android:onClick="cToFConversion"
+        android:text="@string/convert"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/celsius_value_label_TextView" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
         android:id="@+id/CtoFConvertedValueTextView"
-        tools:text="-42.42"
+        android:layout_width="150dp"
+        android:layout_height="75dp"
+        android:gravity="center"
         app:layout_constraintTop_toBottomOf="@id/CtoFConvertButton"
-        app:layout_constraintEnd_toStartOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="42.00°f"
+        />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
